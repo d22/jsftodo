@@ -1,12 +1,12 @@
 package ch.dllnskt.todo.beans;
 
-import ch.dllnskt.todo.domain.Todo;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import java.util.List;
 
+import ch.dllnskt.todo.domain.Todo;
 
 @ManagedBean
 @SessionScoped
@@ -36,8 +36,9 @@ public class TodoListBean {
 		todoBean.setText("");
 	}
 
-	public void remove(Todo todo) {
+	public String remove(Todo todo) {
 		dataBean.removeTodo(todo);
+		return null;
 	}
 
 }

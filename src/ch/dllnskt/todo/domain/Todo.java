@@ -1,5 +1,6 @@
 package ch.dllnskt.todo.domain;
 
+
 public class Todo {
 
 	private String text;

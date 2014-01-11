@@ -4,29 +4,31 @@
 		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:composite="http://java.sun.com/jsf/composite"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-		>
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 
 <composite:interface>
-	<composite:attribute name="todo"/>
+	<composite:attribute name="todo" />
 </composite:interface>
 
 <composite:implementation>
-	<li>
-		<h:panelGroup id="todoEntry">
-			<h:outputLabel id="todoLabel" styleClass="#{cc.attrs.todo.done ? 'done' : ''}" for="doneCheckbox">
-				<h:selectBooleanCheckbox id="doneCheckbox" value="#{cc.attrs.todo.done}"
-				                         valueChangeListener="#{todoListBean.updateDone(cc.attrs.todo)}">
-					<f:ajax event="valueChange" execute="@this" render="@form"/>
-				</h:selectBooleanCheckbox>
-				#{cc.attrs.todo.text}
+	<li><h:panelGroup id="todoEntry">
+			<h:selectBooleanCheckbox id="doneCheckbox"
+				value="#{cc.attrs.todo.done}">
+				<f:ajax event="valueChange" execute="@this" render="todoLabel" />
+			</h:selectBooleanCheckbox>
+			<h:outputLabel id="todoLabel"
+				styleClass="#{cc.attrs.todo.done ? 'done' : ''}" for="doneCheckbox">
+				<h:outputText value="#{cc.attrs.todo.text}"></h:outputText>
 			</h:outputLabel>
-			<h:commandLink styleClass="btn-danger btn-xs right" actionListener="#{todoListBean.remove(cc.attrs.todo)}" value="X">
-				<f:ajax event="action" execute="@this" render="@form"/>
+
+
+			<h:commandLink styleClass="btn-danger btn-xs right" value="X"
+				action="#{todoListBean.remove(todo)}">
+				<f:attribute name="todo" value="#{cc.attrs.todo}" />
+				<f:ajax event="action" execute="@this" render="@form" />
 			</h:commandLink>
-		</h:panelGroup>
-	</li>
+		</h:panelGroup></li>
 </composite:implementation>
 </html>
