@@ -21,7 +21,7 @@
 				                         valueChangeListener="#{todoListBean.updateDone(cc.attrs.todo)}">
 					<f:ajax event="valueChange" execute="@this" render="@form"/>
 				</h:selectBooleanCheckbox>
-				#{cc.attrs.todo.text} #{cc.attrs.todo.done}
+				#{cc.attrs.todo.text}
 			</h:outputLabel>
 			<h:commandLink styleClass="btn-danger btn-xs right" actionListener="#{todoListBean.remove(cc.attrs.todo)}" value="X">
 				<f:ajax event="action" execute="@this" render="@form"/>
