@@ -19,6 +19,8 @@ public class DataBean {
 		todos.add(new Todo("Learn JSF"));
 		todos.add(new Todo("Learn Angular"));
 		todos.add(new Todo("Drink Coffee", true));
+		todos.add(new Todo("Hug Ruedi", false));
+		todos.add(new Todo("Sip champagne from dent", false));
 	}
 
 	public List<Todo> getTodos() {
