@@ -17,14 +17,14 @@
 	<li>
 		<h:panelGroup id="todoEntry">
 			<h:outputLabel id="todoLabel" styleClass="#{cc.attrs.todo.done ? 'done' : ''}" for="doneCheckbox">
-				<h:selectBooleanCheckbox id="doneCheckbox" rvalue="#{cc.attrs.todo.done}"
+				<h:selectBooleanCheckbox id="doneCheckbox" value="#{cc.attrs.todo.done}"
 				                         valueChangeListener="#{todoListBean.updateDone(cc.attrs.todo)}">
-					<f:ajax event="valueChange" execute="@this" render="todoLabel doneCheckbox"/>
+					<f:ajax event="valueChange" execute="@this" render="@form"/>
 				</h:selectBooleanCheckbox>
 				#{cc.attrs.todo.text} #{cc.attrs.todo.done}
 			</h:outputLabel>
-			<h:commandLink styleClass="btn-danger btn-xs right" action="#{todoListBean.remove(cc.attrs.todo)}" value="X">
-				<f:ajax event="action" execute="@form" render="@form"/>
+			<h:commandLink styleClass="btn-danger btn-xs right" actionListener="#{todoListBean.remove(cc.attrs.todo)}" value="X">
+				<f:ajax event="action" execute="@this" render="@form"/>
 			</h:commandLink>
 		</h:panelGroup>
 	</li>
